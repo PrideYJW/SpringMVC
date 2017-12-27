@@ -1,0 +1,5 @@
+面试问题：
+  
+ 为啥事务要放在service层?
+   因为一个service可能会对应多个dao方法
+  因为一个Service完成一个服务，但是可能会调用很多个DAO层的功能，如果Transaction放在DAO层的话，做完一个DAO，就会提交一次事务，永久修改数据库，后面在调用另外一个DAO，但是throws Exception，对于整个的Service来说，应该是要完全回滚的，但是只能回滚到当前的DAO
